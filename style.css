@@ -170,7 +170,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-top: 1.8rem;
+  margin-top: 2.6rem;
 }
 
 @media (max-width: 480px) {
@@ -185,12 +185,14 @@ h2 {
   background: var(--cream-soft);
   border: 1.5px solid rgba(122, 32, 51, 0.15);
   border-radius: 16px;
-  padding: 1.6rem 1rem 1.2rem;
+  padding: 1.4rem 1rem;
+  min-height: 96px;
   cursor: pointer;
   transition: transform 0.15s ease, border-color 0.15s ease, background 0.2s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
 }
 
@@ -212,6 +214,28 @@ h2 {
 .date-option.is-selected .date-icon {
   color: var(--gold);
   background: rgba(255, 255, 255, 0.15);
+}
+
+.fav-arrow {
+  position: absolute;
+  top: -36px;
+  right: 8px;
+  width: 44px;
+  height: 44px;
+  color: var(--gold);
+  transform: rotate(-6deg);
+  animation: nudge 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.fav-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes nudge {
+  0%, 100% { transform: rotate(-6deg) translateY(0); }
+  50% { transform: rotate(-6deg) translateY(4px); }
 }
 
 .date-icon {

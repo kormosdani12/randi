@@ -98,7 +98,9 @@
     }
   }
 
-  populateDays(31);
+  var AUGUSZTUS = 8;
+  monthSelect.value = AUGUSZTUS;
+  populateDays(NAPOK_HONAPBAN[AUGUSZTUS - 1]);
 
   function checkFormComplete() {
     btnContinue.disabled = !(monthSelect.value && daySelect.value);

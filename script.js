@@ -1,17 +1,10 @@
 (function () {
   "use strict";
 
-  var HONAPOK = [
-    "január", "február", "március", "április", "május", "június",
-    "július", "augusztus", "szeptember", "október", "november", "december"
-  ];
-  var NAPOK_HONAPBAN = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
   var pages = document.querySelectorAll(".page");
   var state = {
-    dateLabel: "",
-    month: null,
-    day: null
+    program: "",
+    slotLabel: ""
   };
 
   function goToPage(id) {
@@ -20,11 +13,17 @@
     });
   }
 
-  function capitalize(text) {
-    return text.charAt(0).toUpperCase() + text.slice(1);
-  }
+  // ---------- Oldal 1-2: bocsánatkérés + bevezető ----------
 
-  // ---------- Page 1: kérdés ----------
+  document.getElementById("btn-sorry-next").addEventListener("click", function () {
+    goToPage("page-intro");
+  });
+
+  document.getElementById("btn-intro-next").addEventListener("click", function () {
+    goToPage("page-question");
+  });
+
+  // ---------- Oldal 3: kérdés ----------
 
   var btnYes = document.getElementById("btn-yes");
   var btnNo = document.getElementById("btn-no");
@@ -49,83 +48,53 @@
   });
 
   btnYes.addEventListener("click", function () {
-    goToPage("page-2");
+    goToPage("page-programs");
   });
 
-  // ---------- Page 2: randi program választás ----------
+  // ---------- Oldal 4: randi program választás ----------
 
-  var dateOptions = document.querySelectorAll(".date-option");
+  var programOptions = document.querySelectorAll(".program-option");
 
-  dateOptions.forEach(function (option) {
+  programOptions.forEach(function (option) {
     option.addEventListener("click", function () {
-      dateOptions.forEach(function (o) { o.classList.remove("is-selected"); });
+      programOptions.forEach(function (o) { o.classList.remove("is-selected"); });
       option.classList.add("is-selected");
-      state.dateLabel = option.dataset.date;
+      state.program = option.dataset.program;
 
       setTimeout(function () {
-        goToPage("page-3");
+        if (state.program === "Margit sziget") {
+          goToPage("page-margit-gallery");
+        } else {
+          goToPage("page-date");
+        }
       }, 380);
     });
   });
 
-  // ---------- Page 3: hónap + nap választás ----------
+  // ---------- Oldal 4b: Margit-szigeti galéria ----------
 
-  var monthSelect = document.getElementById("select-month");
-  var daySelect = document.getElementById("select-day");
-  var btnContinue = document.getElementById("btn-continue");
-  var timeForm = document.getElementById("time-form");
+  document.getElementById("btn-gallery-next").addEventListener("click", function () {
+    goToPage("page-date");
+  });
+
+  // ---------- Oldal 5: időpont választás ----------
+
+  var slotOptions = document.querySelectorAll(".slot-option");
   var summaryEl = document.getElementById("summary");
   var finalEyebrow = document.getElementById("final-eyebrow");
 
-  HONAPOK.forEach(function (nev, index) {
-    var opt = document.createElement("option");
-    opt.value = index + 1;
-    opt.textContent = capitalize(nev);
-    monthSelect.appendChild(opt);
-  });
+  slotOptions.forEach(function (option) {
+    option.addEventListener("click", function () {
+      slotOptions.forEach(function (o) { o.classList.remove("is-selected"); });
+      option.classList.add("is-selected");
+      state.slotLabel = option.dataset.label;
 
-  function populateDays(maxDay) {
-    var previousValue = daySelect.value;
-    daySelect.innerHTML = '<option value="" disabled selected>Válassz</option>';
-    for (var d = 1; d <= maxDay; d++) {
-      var opt = document.createElement("option");
-      opt.value = d;
-      opt.textContent = d;
-      daySelect.appendChild(opt);
-    }
-    if (previousValue && parseInt(previousValue, 10) <= maxDay) {
-      daySelect.value = previousValue;
-    }
-  }
-
-  var AUGUSZTUS = 8;
-  monthSelect.value = AUGUSZTUS;
-  populateDays(NAPOK_HONAPBAN[AUGUSZTUS - 1]);
-
-  function checkFormComplete() {
-    btnContinue.disabled = !(monthSelect.value && daySelect.value);
-  }
-
-  monthSelect.addEventListener("change", function () {
-    var maxDay = NAPOK_HONAPBAN[parseInt(monthSelect.value, 10) - 1];
-    populateDays(maxDay);
-    checkFormComplete();
-  });
-
-  daySelect.addEventListener("change", checkFormComplete);
-
-  timeForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (!monthSelect.value || !daySelect.value) return;
-
-    state.month = parseInt(monthSelect.value, 10);
-    state.day = parseInt(daySelect.value, 10);
-
-    var dateText = HONAPOK[state.month - 1] + " " + state.day + ".";
-    finalEyebrow.textContent = capitalize(dateText);
-    summaryEl.textContent = "Randi: " + state.dateLabel;
-
-    goToPage("page-4");
+      setTimeout(function () {
+        finalEyebrow.textContent = state.slotLabel;
+        summaryEl.textContent = "Randi: " + state.program;
+        goToPage("page-final");
+      }, 380);
+    });
   });
 
   // ---------- Díszítő lebegő elemek ----------

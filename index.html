@@ -15,11 +15,29 @@
 
 <main class="stage">
 
-  <!-- 1. oldal - Kérdés -->
-  <section class="page page--active" id="page-1" aria-labelledby="q-title">
+  <!-- 1. oldal - Bocsánatkérés -->
+  <section class="page page--active" id="page-sorry" aria-labelledby="sorry-title">
+    <div class="card">
+      <p class="eyebrow">Mielőtt bármi más</p>
+      <h2 id="sorry-title" class="message-title">Tudom, hogy sok minden történt az elmúlt napokban, és ez téged is nagyon rosszul érintett. Megértem, ha nem volt kedved beszélni velem, és rossz kedved volt...</h2>
+      <button type="button" class="btn btn--yes next-btn" id="btn-sorry-next">Tovább</button>
+    </div>
+  </section>
+
+  <!-- 2. oldal - Bevezető -->
+  <section class="page" id="page-intro" aria-labelledby="intro-title">
+    <div class="card">
+      <p class="eyebrow">Egy kis meglepetés</p>
+      <h2 id="intro-title" class="message-title">Szeretném, ha jobban éreznéd magad, ezért kitaláltam magunknak egy kis programot — szerintem élveznéd.</h2>
+      <button type="button" class="btn btn--yes next-btn" id="btn-intro-next">Tovább</button>
+    </div>
+  </section>
+
+  <!-- 3. oldal - Kérdés -->
+  <section class="page" id="page-question" aria-labelledby="q-title">
     <div class="card question-card">
       <p class="eyebrow">Egy fontos kérdés</p>
-      <h1 id="q-title">Eljössz velem randizni,<br>kicsim?</h1>
+      <h1 id="q-title">Eljössz velem randizni?</h1>
       <div class="answers">
         <button type="button" class="btn btn--yes" id="btn-yes">Igen</button>
         <button type="button" class="btn btn--no" id="btn-no" tabindex="-1" aria-hidden="true"><span class="no-label">Nem</span></button>
@@ -28,21 +46,21 @@
     </div>
   </section>
 
-  <!-- 2. oldal - Randi program választás -->
-  <section class="page" id="page-2" aria-labelledby="d-title">
+  <!-- 4. oldal - Randi program választás -->
+  <section class="page" id="page-programs" aria-labelledby="d-title">
     <div class="card wide-card">
       <p class="eyebrow">Válassz egyet</p>
-      <h2 id="d-title">Mit csinálnál szívesen?</h2>
-      <div class="date-grid">
+      <h2 id="d-title">Mit csinálnál szívesen a hétvégén?</h2>
+      <div class="program-grid">
 
-        <button type="button" class="date-option" data-date="Állatkert">
+        <button type="button" class="program-option" data-program="Állatkert">
           <span class="fav-arrow" aria-hidden="true">
             <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 4C10 20 20 34 40 42" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
               <path d="M28 40l12 2 -4-12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <span class="date-icon" aria-hidden="true">
+          <span class="program-icon" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24" cy="26" r="12" stroke="currentColor" stroke-width="2.2"/>
               <circle cx="14" cy="14" r="5" stroke="currentColor" stroke-width="2.2"/>
@@ -52,76 +70,74 @@
               <path d="M20 30c1.4 1.4 6.6 1.4 8 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </span>
-          <span class="date-name">Állatkert</span>
+          <span class="program-name">Állatkert</span>
         </button>
 
-        <button type="button" class="date-option" data-date="Mozi">
-          <span class="date-icon" aria-hidden="true">
+        <button type="button" class="program-option" data-program="Margit sziget">
+          <span class="program-icon" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="10" width="32" height="28" rx="2" stroke="currentColor" stroke-width="2.2"/>
-              <path d="M8 17h32M8 31h32" stroke="currentColor" stroke-width="2.2"/>
-              <path d="M14 10l4 7M24 10l4 7M34 10l4 7" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 8v26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M24 12c6 0 10 4 10 4s-4 4-10 4-10-4-10-4 4-4 10-4Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M14 40c4-3 8-3 10-1 2-2 6-2 10 1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <span class="date-name">Mozi</span>
+          <span class="program-name">Margit sziget</span>
         </button>
 
-        <button type="button" class="date-option" data-date="Esti autókázás">
-          <span class="date-icon" aria-hidden="true">
+        <button type="button" class="program-option" data-program="Ceglédi program">
+          <span class="program-icon" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 27l3-9a4 4 0 0 1 3.8-2.7h16.4A4 4 0 0 1 36 18l3 9" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-              <rect x="6" y="27" width="36" height="8" rx="2.5" stroke="currentColor" stroke-width="2.2"/>
-              <circle cx="14" cy="35" r="3" stroke="currentColor" stroke-width="2.2"/>
-              <circle cx="34" cy="35" r="3" stroke="currentColor" stroke-width="2.2"/>
-              <circle cx="36" cy="9" r="4" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M8 40V20l16-10 16 10v20" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M8 40h32" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M20 40V28h8v12" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M24 10V6M21 8h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </span>
-          <span class="date-name">Esti autókázás</span>
-        </button>
-
-        <button type="button" class="date-option" data-date="Szabadulószoba">
-          <span class="date-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="12" y="21" width="24" height="17" rx="2.5" stroke="currentColor" stroke-width="2.2"/>
-              <path d="M18 21v-6a6 6 0 0 1 12 0v6" stroke="currentColor" stroke-width="2.2"/>
-              <circle cx="24" cy="29" r="2.4" stroke="currentColor" stroke-width="2"/>
-              <path d="M24 31.5V34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </span>
-          <span class="date-name">Szabadulószoba</span>
+          <span class="program-name">Ceglédi program</span>
         </button>
 
       </div>
     </div>
   </section>
 
-  <!-- 3. oldal - Időpont választás -->
-  <section class="page" id="page-3" aria-labelledby="t-title">
-    <div class="card">
-      <p class="eyebrow">Már csak egy apróság</p>
-      <h2 id="t-title">Mikor lenne neked jó?</h2>
-      <form class="time-form" id="time-form">
-        <div class="field-row">
-          <label class="field">
-            <span>Hónap</span>
-            <select id="select-month" required>
-              <option value="" disabled selected>Válassz</option>
-            </select>
-          </label>
-          <label class="field">
-            <span>Nap</span>
-            <select id="select-day" required>
-              <option value="" disabled selected>Válassz</option>
-            </select>
-          </label>
-        </div>
-        <button type="submit" class="btn btn--yes" id="btn-continue" disabled>Tovább</button>
-      </form>
+  <!-- 4b. oldal - Margit-szigeti galéria -->
+  <section class="page" id="page-margit-gallery" aria-labelledby="g-title">
+    <div class="card wide-card">
+      <p class="eyebrow">Margit sziget</p>
+      <h2 id="g-title">Ezt találtam ki neked</h2>
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <img src="images/piknik.webp" alt="Margitszigeti piknikezés" loading="lazy">
+          <figcaption>Piknik</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="images/japankert.webp" alt="Margitszigeti Japánkert" loading="lazy">
+          <figcaption>Japánkert</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="images/vadaspark.webp" alt="Margitszigeti vadaspark" loading="lazy">
+          <figcaption>Vadaspark</figcaption>
+        </figure>
+      </div>
+      <button type="button" class="btn btn--yes next-btn" id="btn-gallery-next">Tovább</button>
     </div>
   </section>
 
-  <!-- 4. oldal - Záró üzenet -->
-  <section class="page" id="page-4" aria-labelledby="f-title">
+  <!-- 5. oldal - Időpont választás -->
+  <section class="page" id="page-date" aria-labelledby="t-title">
+    <div class="card">
+      <p class="eyebrow">Már csak egy apróság</p>
+      <h2 id="t-title">Mikor lenne neked jó?</h2>
+      <div class="slot-list">
+        <button type="button" class="slot-option" data-label="Augusztus 14. péntek">Augusztus 14. péntek</button>
+        <button type="button" class="slot-option" data-label="Augusztus 15. szombat">Augusztus 15. szombat</button>
+        <button type="button" class="slot-option" data-label="Augusztus 16. vasárnap">Augusztus 16. vasárnap</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. oldal - Záró üzenet -->
+  <section class="page" id="page-final" aria-labelledby="f-title">
     <div class="card">
       <p class="eyebrow" id="final-eyebrow">Minden készen áll</p>
       <h2 id="f-title" class="closing-title">A nap végén szeretném, ha eljönnél hozzám, mert egy meglepetéssel is készültem Neked!</h2>

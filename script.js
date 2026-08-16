@@ -3,8 +3,7 @@
 
   var pages = document.querySelectorAll(".page");
   var state = {
-    program: "",
-    slotLabel: ""
+    program: ""
   };
 
   function goToPage(id) {
@@ -77,24 +76,31 @@
     goToPage("page-date");
   });
 
-  // ---------- Oldal 5: időpont választás ----------
+  // ---------- Oldal 5: időpont választás (több is választható) ----------
 
   var slotOptions = document.querySelectorAll(".slot-option");
+  var btnDateNext = document.getElementById("btn-date-next");
   var summaryEl = document.getElementById("summary");
   var finalEyebrow = document.getElementById("final-eyebrow");
 
   slotOptions.forEach(function (option) {
     option.addEventListener("click", function () {
-      slotOptions.forEach(function (o) { o.classList.remove("is-selected"); });
-      option.classList.add("is-selected");
-      state.slotLabel = option.dataset.label;
-
-      setTimeout(function () {
-        finalEyebrow.textContent = state.slotLabel;
-        summaryEl.textContent = "Randi: " + state.program;
-        goToPage("page-final");
-      }, 380);
+      option.classList.toggle("is-selected");
+      var anySelected = Array.prototype.some.call(slotOptions, function (o) {
+        return o.classList.contains("is-selected");
+      });
+      btnDateNext.disabled = !anySelected;
     });
+  });
+
+  btnDateNext.addEventListener("click", function () {
+    var chosen = Array.prototype.filter.call(slotOptions, function (o) {
+      return o.classList.contains("is-selected");
+    }).map(function (o) { return o.dataset.label; });
+
+    finalEyebrow.textContent = chosen.join(", ");
+    summaryEl.textContent = "Randi: " + state.program;
+    goToPage("page-final");
   });
 
   // ---------- Díszítő lebegő elemek ----------

@@ -18,8 +18,8 @@
   <!-- 1. oldal - Bocsánatkérés -->
   <section class="page page--active" id="page-sorry" aria-labelledby="sorry-title">
     <div class="card">
-      <p class="eyebrow">Mielőtt bármi más</p>
-      <h2 id="sorry-title" class="message-title">Tudom, hogy sok minden történt az elmúlt napokban, és ez téged is nagyon rosszul érintett. Megértem, ha nem volt kedved beszélni velem, és rossz kedved volt...</h2>
+      <p class="eyebrow">Figyelj kicsim</p>
+      <h2 id="sorry-title" class="message-title">Tudom, hogy sok minden történt az elmúlt hetekben, és ez téged is nagyon rosszul érintett. Megértem, ha kicsit eleged lett mindenből és egyedül szeretnél lenni...</h2>
       <button type="button" class="btn btn--yes next-btn" id="btn-sorry-next">Tovább</button>
     </div>
   </section>
@@ -28,7 +28,7 @@
   <section class="page" id="page-intro" aria-labelledby="intro-title">
     <div class="card">
       <p class="eyebrow">Egy kis meglepetés</p>
-      <h2 id="intro-title" class="message-title">Szeretném, ha jobban éreznéd magad, ezért kitaláltam magunknak egy kis programot — szerintem élveznéd.</h2>
+      <h2 id="intro-title" class="message-title">Viszont, szeretném kicsit feldobni a kedved és kitaláltam egy kis programot - szerintem tetszeni fog.</h2>
       <button type="button" class="btn btn--yes next-btn" id="btn-intro-next">Tovább</button>
     </div>
   </section>
@@ -36,7 +36,7 @@
   <!-- 3. oldal - Kérdés -->
   <section class="page" id="page-question" aria-labelledby="q-title">
     <div class="card question-card">
-      <p class="eyebrow">Egy fontos kérdés</p>
+      <p class="eyebrow">Egy kérdés</p>
       <h1 id="q-title">Eljössz velem randizni?</h1>
       <div class="answers">
         <button type="button" class="btn btn--yes" id="btn-yes">Igen</button>
@@ -50,16 +50,21 @@
   <section class="page" id="page-programs" aria-labelledby="d-title">
     <div class="card wide-card">
       <p class="eyebrow">Válassz egyet</p>
-      <h2 id="d-title">Mit csinálnál szívesen a hétvégén?</h2>
+      <h2 id="d-title">Mit csinálnál szívesen a héten?</h2>
       <div class="program-grid">
 
-        <button type="button" class="program-option" data-program="Állatkert">
-          <span class="fav-arrow" aria-hidden="true">
-            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 4C10 20 20 34 40 42" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-              <path d="M28 40l12 2 -4-12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <button type="button" class="program-option is-featured" data-program="Margit sziget">
+          <span class="program-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 8v26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M24 12c6 0 10 4 10 4s-4 4-10 4-10-4-10-4 4-4 10-4Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M14 40c4-3 8-3 10-1 2-2 6-2 10 1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
+          <span class="program-name">Margit sziget</span>
+        </button>
+
+        <button type="button" class="program-option" data-program="Állatkert">
           <span class="program-icon" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24" cy="26" r="12" stroke="currentColor" stroke-width="2.2"/>
@@ -71,17 +76,6 @@
             </svg>
           </span>
           <span class="program-name">Állatkert</span>
-        </button>
-
-        <button type="button" class="program-option" data-program="Margit sziget">
-          <span class="program-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 8v26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-              <path d="M24 12c6 0 10 4 10 4s-4 4-10 4-10-4-10-4 4-4 10-4Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-              <path d="M14 40c4-3 8-3 10-1 2-2 6-2 10 1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <span class="program-name">Margit sziget</span>
         </button>
 
         <button type="button" class="program-option" data-program="Ceglédi program">
@@ -126,13 +120,17 @@
   <!-- 5. oldal - Időpont választás -->
   <section class="page" id="page-date" aria-labelledby="t-title">
     <div class="card">
-      <p class="eyebrow">Már csak egy apróság</p>
+      <p class="eyebrow">Már csak egy kérdés</p>
       <h2 id="t-title">Mikor lenne neked jó?</h2>
+      <p class="hint">(több válaszlehetőség)</p>
       <div class="slot-list">
-        <button type="button" class="slot-option" data-label="Augusztus 14. péntek">Augusztus 14. péntek</button>
-        <button type="button" class="slot-option" data-label="Augusztus 15. szombat">Augusztus 15. szombat</button>
-        <button type="button" class="slot-option" data-label="Augusztus 16. vasárnap">Augusztus 16. vasárnap</button>
+        <button type="button" class="slot-option" data-label="Augusztus 18.">Augusztus 18.</button>
+        <button type="button" class="slot-option" data-label="Augusztus 19.">Augusztus 19.</button>
+        <button type="button" class="slot-option" data-label="Augusztus 20.">Augusztus 20.</button>
+        <button type="button" class="slot-option" data-label="Augusztus 21.">Augusztus 21.</button>
+        <button type="button" class="slot-option" data-label="Augusztus 22.">Augusztus 22.</button>
       </div>
+      <button type="button" class="btn btn--yes next-btn" id="btn-date-next" disabled>Tovább</button>
     </div>
   </section>
 
